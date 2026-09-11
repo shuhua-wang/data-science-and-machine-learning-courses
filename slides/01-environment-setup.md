@@ -30,13 +30,21 @@ Senior Data Engineer at <a  href="https://www.ovintiv.com/">Ovintiv</a>
 # Module 1
 ## Tooling & Environment Setup
 
+Local Development 💻
+
 - <a href="https://code.visualstudio.com/">Visual Studio Code</a>: code editor, integrated development environment (IDE)
-- <a href="https://docs.astral.sh/uv/">uv</a>: an extremely fast Python package and project manager,
-  setting up a **reproducible** Python environment
 - <a href="https://www.python.org/">Python</a>: programming language
 - <a href="https://pypi.org/">PyPI</a>: Python package index, repository of software for the Python programming ,
   helps you find and install software developed and shared by the Python community
-- <a href="https://pypi.org/">GitHub</a>: xxx
+- <a href="https://docs.astral.sh/uv/">uv</a>: an extremely fast Python package and project manager,
+  setting up a **reproducible** Python environment
+- <a href="https://github.com/">GitHub</a>: web-based platform for hosting and managing code repositories using `Git`,
+  widely used by developers to collaborate on software projects, track changes, and manage version control
+
+<a href="https://docs.github.com/en/billing/concepts/product-billing/github-codespaces">GitHub Codespaces 🚀</a>
+
+- Cloud-based development environment feature that lets you spin up a fully configured, workspace directly from a GitHub
+  repository, so you can write, run, and debug code in your browser without setting up anything locally
 
 ---
 
