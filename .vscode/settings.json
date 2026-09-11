@@ -16,5 +16,13 @@
   "python.envFile": "${workspaceFolder}/.env",
   "python.analysis.extraPaths": [
     "${workspaceFolder}/src"
-  ]
+  ],
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "selection",
+  "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#908f897a",
+        "editor.selectionHighlightBackground": "#bb78787f",
+        "minimap.selectionHighlight": "#ff0000bb",
+        "minimapSlider.hoverBackground": "#00eeff"
+    }
 }

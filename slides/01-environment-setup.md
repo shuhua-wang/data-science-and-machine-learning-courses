@@ -7,9 +7,6 @@ info: |
   Getting from a blank computer to a working, reproducible Python environment with uv.
 transition: fade
 
-themeConfig:
-  logoHeader: '/logo.svg'
-
 layout: intro
 ---
 
@@ -31,9 +28,15 @@ Senior Data Engineer at <a  href="https://www.ovintiv.com/">Ovintiv</a>
 ---
 
 # Module 1
-## Environment Setup & Tooling
+## Tooling & Environment Setup
 
-Installing `uv` and setting up a reproducible Python environment
+- <a href="https://code.visualstudio.com/">Visual Studio Code</a>: code editor, integrated development environment (IDE)
+- <a href="https://docs.astral.sh/uv/">uv</a>: an extremely fast Python package and project manager,
+  setting up a **reproducible** Python environment
+- <a href="https://www.python.org/">Python</a>: programming language
+- <a href="https://pypi.org/">PyPI</a>: Python package index, repository of software for the Python programming ,
+  helps you find and install software developed and shared by the Python community
+- <a href="https://pypi.org/">GitHub</a>: xxx
 
 ---
 
