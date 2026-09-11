@@ -5,6 +5,7 @@
         "context": ".."
     },
     "runArgs": ["--name=dsml-courses"],
+    "postCreateCommand": "uv venv && uv sync",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -20,7 +21,8 @@
                 "ms-toolsai.vscode-jupyter-slideshow",
                 "EditorConfig.EditorConfig",
                 "Anthropic.claude-code",
-                "charliermarsh.ruff"
+                "charliermarsh.ruff",
+                "ms-azuretools.vscode-containers"
             ]
         }
     }
