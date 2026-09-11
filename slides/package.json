@@ -1,0 +1,19 @@
+{
+  "name": "data-science-and-machine-learning-courses-slides",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Slidev decks for the Data Science & Machine Learning course (one deck per module).",
+  "type": "module",
+  "scripts": {
+    "dev": "slidev 01-environment-setup.md",
+    "dev:01": "slidev 01-environment-setup.md",
+    "build:01": "slidev build 01-environment-setup.md",
+    "export:01": "slidev export 01-environment-setup.md"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "^0.25.0",
+    "slidev-theme-penguin": "^2.3.1",
+    "@iconify-json/logos": "^1.2.13"
+  }
+}

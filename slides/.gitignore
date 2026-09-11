@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-ssr/
+.slidev/
+*.local
+components.d.ts

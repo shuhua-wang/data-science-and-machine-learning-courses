@@ -1,11 +1,15 @@
 [project]
 name = "data-science-and-machine-learning-courses"
 version = "0.1.0"
-description = "Add your description here"
+description = "Data Science and Machine Learning Courses Material"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.1",
     "notebook>=7.6.2",
+    "numpy>=2.5.3",
+    "openpyxl>=3.1.5",
     "pandas>=3.0.5",
     "scikit-learn>=1.9.0",
     "scipy>=1.18.1",

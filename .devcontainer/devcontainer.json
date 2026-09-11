@@ -5,7 +5,7 @@
         "context": ".."
     },
     "runArgs": ["--name=dsml-courses"],
-    "postCreateCommand": "uv venv && uv sync",
+    "postCreateCommand": "uv venv .venv && uv sync",
     "customizations": {
         "vscode": {
             "extensions": [
