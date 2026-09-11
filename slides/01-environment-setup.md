@@ -6,23 +6,27 @@ info: |
   Module 1 of the Data Science & Machine Learning course.
   Getting from a blank computer to a working, reproducible Python environment with uv.
 transition: fade
----
 
----
+themeConfig:
+  logoHeader: '/logo.svg'
+
 layout: intro
 ---
 
-# Data Science and Machine Learning
-Hands-on Tutorial
+# Data Science and Machine Learning - CCUS
+📝 Hands-on Tutorial
 
 ---
-layout: presenter
-presenterImage: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1622370075/as-portfolio/alvaro_saburido.jpg'
----
 
-- Shuhua Wang
-- Senior Data Engineer
-- Ovintiv
+# Shuhua Wang
+
+Senior Data Engineer at <a  href="https://www.ovintiv.com/">Ovintiv</a>
+
+- 🛢️ Petroleum Engineering <a href="https://www.ucalgary.ca/">@ UCalgary</a>
+- 🖥️ Software Scientist <a href="https://www.cmgl.ca/">@ CMG</a>
+- 💻 I often write at <a href="https://github.com/shuhua-wang">github.com/shuhua-wang</a>
+- 📧 Email: shuhua.wang@ovintiv.com
+- 🐍 Python, 📐 R
 
 ---
 
