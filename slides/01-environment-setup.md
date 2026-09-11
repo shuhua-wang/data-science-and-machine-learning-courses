@@ -13,6 +13,8 @@ layout: intro
 # Data Science and Machine Learning - CCUS
 📝 Hands-on Tutorial
 
+**Shuhua Wang, 2026**
+
 ---
 
 # Shuhua Wang
@@ -32,19 +34,23 @@ Senior Data Engineer at <a  href="https://www.ovintiv.com/">Ovintiv</a>
 
 Local Development 💻
 
-- <a href="https://code.visualstudio.com/">Visual Studio Code</a>: code editor, integrated development environment (IDE)
+- <a href="https://code.visualstudio.com/">Visual Studio Code</a>: code editor,
+  integrated development environment (IDE)
 - <a href="https://www.python.org/">Python</a>: programming language
-- <a href="https://pypi.org/">PyPI</a>: Python package index, repository of software for the Python programming ,
-  helps you find and install software developed and shared by the Python community
-- <a href="https://docs.astral.sh/uv/">uv</a>: an extremely fast Python package and project manager,
-  setting up a **reproducible** Python environment
-- <a href="https://github.com/">GitHub</a>: web-based platform for hosting and managing code repositories using `Git`,
-  widely used by developers to collaborate on software projects, track changes, and manage version control
+- <a href="https://pypi.org/">PyPI</a>: Python package index, repository of
+  software for the Python programming, helps you find and install software
+  developed and shared by the Python community
+- <a href="https://docs.astral.sh/uv/">uv</a>: an extremely fast Python package
+  and project manager, setting up a **reproducible** Python environment
+- <a href="https://github.com/">GitHub</a>: web-based platform for hosting and
+  managing code repositories using `Git`, widely used by developers to collaborate
+  on software projects, track changes, and manage version control
 
 <a href="https://docs.github.com/en/billing/concepts/product-billing/github-codespaces">GitHub Codespaces 🚀</a>
 
-- Cloud-based development environment feature that lets you spin up a fully configured, workspace directly from a GitHub
-  repository, so you can write, run, and debug code in your browser without setting up anything locally
+- Cloud-based development environment feature that lets you spin up a fully
+  configured, workspace directly from a GitHub repository, so you can write, run,
+  and debug code in your browser without setting up anything locally
 
 ---
 
@@ -53,7 +59,7 @@ Local Development 💻
 1. What is a Terminal, and What is Python?
 2. Installing `uv` (macOS, Linux, and Windows)
 3. Managing Python Versions with `uv`
-4. Managing Packages & Projects with `uv`
+4. Managing Python Packages & Projects with `uv`
 5. Setting Up an Editor and Jupyter
 
 By the end: a working `uv` project, an editor, and Jupyter — ready for Module 2.
@@ -71,7 +77,6 @@ layout: center
 
 - **GUI** (Graphical User Interface) — click buttons and icons
 - **Terminal** — type text commands, read text responses
-- The program that runs your commands is called a **shell**
 
 Why use it?
 
@@ -83,15 +88,21 @@ Why use it?
 
 # Opening a terminal
 
-| OS | App |
-|---|---|
-| macOS | **Terminal** (`Cmd+Space` → "Terminal") |
-| Linux | **Terminal** / **Konsole** / `Ctrl+Alt+T` |
-| Windows | **PowerShell** |
+| OS      | App (How to open it)                                                                        |
+|---------|---------------------------------------------------------------------------------------------|
+| Windows | **PowerShell** / **Command Prompt** (Search `powershell` or `cmd` in the search bar)          |
+| macOS   | **Terminal** (Press `Command` + `Spacebar` to open Spotlight, type "terminal" → "Terminal") |
+
+<br>
+
+```text
+PS C:\Users\yourname>            ← Windows powershell prompt
+
+C:\Users\yourname>               ← Windows cmd prompt
+```
 
 ```text
 yourname@yourcomputer ~ %        ← macOS/Linux prompt
-PS C:\Users\yourname>            ← Windows prompt
 ```
 
 ---
@@ -123,28 +134,10 @@ cd ~           # jump to home
 ```bash
 python hello.py
 ```
+
 ```text
 Hello, world!
 ```
-
----
-
-# The REPL
-
-Run `python` with no file → interactive prompt:
-
-```text
->>> 2 + 2
-4
->>> print("hi")
-hi
->>> exit()
-```
-
-A Jupyter notebook (Lesson 1.5) is this same idea, in editable, re-runnable cells.
-
-`python` vs `python3`: inconsistent across OSes — `uv` fixes this for us starting
-next lesson.
 
 ---
 layout: center
@@ -158,7 +151,8 @@ layout: center
 # What is `uv`, and why use it?
 
 `uv` = one fast tool that installs Python versions, creates isolated project
-environments, installs packages, and locks exact versions.
+environments, installs packages, and locks exact versions for Python & Python
+packages.
 
 Replaces juggling `pip` + `venv` + `pyenv` (+ `conda`) separately.
 
@@ -169,7 +163,9 @@ Replaces juggling `pip` + `venv` + `pyenv` (+ `conda`) separately.
 
 ---
 
-# Install: macOS / Linux
+# Install <a href="https://docs.astral.sh/uv/">uv</a>: macOS / Linux
+
+- Method 1:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -181,13 +177,17 @@ installing to /Users/yourname/.local/bin
 everything's installed!
 ```
 
+- Method 2:
+
 macOS + Homebrew alternative: `brew install uv`
 
 Close & reopen your terminal afterward.
 
 ---
 
-# Install: Windows
+# Install <a href="https://docs.astral.sh/uv/">uv</a>: Windows
+
+- Method 1:
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
@@ -199,6 +199,8 @@ installing to C:\Users\yourname\.local\bin
 everything's installed!
 ```
 
+- Method 2:
+
 Alternative: `winget install --id=astral-sh.uv -e`
 
 Close & reopen PowerShell afterward.
@@ -209,9 +211,8 @@ Close & reopen PowerShell afterward.
 
 ```bash
 uv --version
-```
-```text
-uv 0.12.3 (aarch64-apple-darwin)
+
+> uv 0.12.3 (aarch64-apple-darwin)
 ```
 
 If you see **"command not found: uv"** (or PowerShell's "not recognized"), it's a
@@ -225,10 +226,13 @@ If you see **"command not found: uv"** (or PowerShell's "not recognized"), it's 
 
 - **macOS/Linux**: reopen terminal, or `source ~/.zshrc` (`~/.bashrc` on many
   Linux setups); confirm `~/.local/bin` is exported onto `PATH`
+
+```text
+export PATH=$HOME/.local/bin:$PATH
+```
+
 - **Windows**: reopen PowerShell; else Start Menu → "Environment Variables" →
   edit `Path` → add `...\​.local\bin`
-
-Try it yourself: `notebooks/1.2-installing-uv.ipynb`
 
 ---
 layout: center
@@ -239,7 +243,7 @@ layout: center
 
 ---
 
-# Why pin a Python version?
+# Why pin a <a href="https://www.python.org/downloads/">Python version</a>?
 
 - Python changes over time (3.10, 3.11, 3.12, ...)
 - Your code, or a package, may need a specific version
@@ -248,43 +252,42 @@ layout: center
 
 Same reproducibility idea as the lockfile in Lesson 1.4, applied to Python itself.
 
+<img src="./assets/python-lifecycle.png" class="w-120 mx-auto block" />
+
 ---
 
 # List & install versions
 
+- List which python is installed on your computer
+
 ```bash
 uv python list
+
+> cpython-3.13.2-macos-aarch64-none   <download available>
+> cpython-3.10.12-macos-aarch64-none  /Users/yourname/.local/bin/python3.10
 ```
-```text
-cpython-3.13.2-macos-aarch64-none   <download available>
-cpython-3.10.12-macos-aarch64-none  /Users/yourname/.local/bin/python3.10
-```
+
+- Install python
 
 ```bash
-uv python install 3.12
-```
-```text
-Installed Python 3.12.8 in 2.1s
+uv python install 3.14
+
+> Installed Python 3.14.7 in 2.1s
 ```
 
-`uv` downloads and manages versions itself — no separate python.org install needed.
+> [!NOTE]
+> - `uv` downloads and manages versions itself — no separate python.org install needed
+> - Install multiple versions of Python on your computer at the same time
+> - Manage different versions of Python on the same machine
 
 ---
 
 # Pin a version to a project
 
 ```bash
-uv python pin 3.10
-```
-```text
-Pinned `.python-version` to `cpython-3.10.12-macos-aarch64-none`
-```
+uv python pin 3.14
 
-```bash
-cat .python-version
-```
-```text
-3.10
+> Pinned `.python-version` to `3.14`
 ```
 
 This file is committed to version control — every collaborator gets the same
@@ -302,28 +305,29 @@ cd project-b   # pinned 3.12
 uv run python --version    # → Python 3.12.8
 ```
 
-No activating, no deactivating — `uv` reads each folder's pin automatically.
-
-Try it yourself: `notebooks/1.3-managing-python-versions.ipynb`
+`uv` reads each folder's pin automatically, each project uses its own Python
+version without conflicts.
 
 ---
 layout: center
 ---
 
 # Lesson 1.4
-## Managing Packages & Projects with `uv`
+## Managing Python Packages & Projects with `uv`
 
 ---
 
 # Packages & version conflicts
 
-- A **package** = reusable published code (`pandas`, `scikit-learn`, ...)
+- A **package** = reusable published code (`pandas`, `scikit-learn`, ...) on PyPI
 - Packages depend on other packages, which have their own versions
 - **Version conflict**: two things you need disagree on a shared
   dependency's version
 
 Fix: give every project its **own isolated environment** (`.venv`) —
 `uv` creates and manages this for you.
+
+<img src="./assets/python-virtual-envs.png" class="w-120 mx-auto block" />
 
 ---
 
@@ -336,7 +340,7 @@ uv init
 
 ```text
 my-first-project/
-├── .python-version
+├── .python-version  ← Python version
 ├── pyproject.toml   ← the project's "ID card"
 ├── README.md
 └── main.py
@@ -347,8 +351,10 @@ my-first-project/
 # `uv add` — add a dependency
 
 ```bash
-uv add pandas
+uv add pandas       # add pandas to the project
+uv remove pandas    # remove pandas from the project
 ```
+
 ```text
 Resolved 12 packages in 320ms
 Installed 6 packages in 89ms
@@ -360,23 +366,33 @@ Installed 6 packages in 89ms
 - Resolves compatible versions
 - Installs into the project's isolated environment
 - Updates `pyproject.toml` **and** `uv.lock`
-- Dev-only tools: `uv add --dev jupyter`
 
 ---
 
-# `uv run` and `uv sync`
+# `uv run`, `uv venv` and `uv sync`
+
+- `uv run` — "do this, using exactly this project's packages & Python"
 
 ```bash
-uv run python main.py       # run inside the project's own environment
+uv run python main.py     # run inside the project's own environment
 ```
+
+<br>
+
+- `uv venv` — "create a virtual environemnt inside project folder"
 
 ```bash
-uv sync                     # recreate the environment from
-                             # pyproject.toml + uv.lock, exactly
+uv venv .venv             # run inside the project's own environment
 ```
 
-`uv run` = "do this, using exactly this project's packages & Python."
-`uv sync` = "make my environment match what's recorded, exactly."
+<br>
+
+- `uv sync` = "make my environment match what's recorded, exactly"
+
+```bash
+uv sync                   # recreate the environment from
+                          # pyproject.toml + uv.lock, exactly
+```
 
 ---
 
@@ -399,13 +415,11 @@ Everything above is the workflow for a **brand-new project of your own.**
 For **this course's repo**, `pyproject.toml` + `uv.lock` already exist — just run:
 
 ```bash
-cd data-science-courses
+cd data-science-and-machine-learning-courses
 uv sync
 ```
 
 That's the *only* command you need here. Then use `uv run ...` for everything.
-
-Try it yourself: `notebooks/1.4-managing-packages-and-projects.ipynb`
 
 ---
 layout: center
@@ -421,7 +435,6 @@ layout: center
 1. Download from **code.visualstudio.com**, install
 2. Extensions panel → install **"Python"** (Microsoft)
 3. Optional: `code .` opens the current folder in VS Code
-   - Not found? `Cmd/Ctrl+Shift+P` → "Install 'code' command in PATH"
 
 Any editor works — VS Code is just the one with guided setup here.
 
@@ -430,8 +443,9 @@ Any editor works — VS Code is just the one with guided setup here.
 # Adding Jupyter
 
 ```bash
-uv add --dev jupyter
+uv add jupyter
 ```
+
 ```text
 Resolved 38 packages in 210ms
 Installed 38 packages in 3.4s
@@ -440,8 +454,6 @@ Installed 38 packages in 3.4s
 ```
 
 `.ipynb` notebook = formatted text + live code + output, in runnable **cells**.
-
-(Already installed in this course's repo — no need to run this here.)
 
 ---
 
@@ -467,8 +479,6 @@ right packages.
 - `Shift+Enter` runs a cell and moves to the next
 - "Run All Cells" runs a whole notebook top to bottom
 - `ModuleNotFoundError` on something installed? → wrong kernel selected
-
-Try it yourself: `notebooks/1.5-editor-and-jupyter-setup.ipynb`
 
 ---
 layout: center
