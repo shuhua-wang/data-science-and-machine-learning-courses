@@ -432,7 +432,7 @@ layout: center
 
 # VS Code
 
-1. Download from **code.visualstudio.com**, install
+1. Download from <a href="https://code.visualstudio.com/">Visual Studio Code</a>, install
 2. Extensions panel → install **"Python"** (Microsoft)
 3. Optional: `code .` opens the current folder in VS Code
 
