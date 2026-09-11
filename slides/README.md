@@ -26,7 +26,7 @@ This installs `@slidev/cli`, `@slidev/theme-default` (kept as a fallback theme),
 Either use one of the npm scripts in `package.json`:
 
 ```sh
-npm run dev        # previews 01-environment-setup.md by default
+npm run dev         # previews 01-environment-setup.md by default
 npm run dev:03      # previews 03-pandas.md
 ```
 

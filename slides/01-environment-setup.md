@@ -8,6 +8,24 @@ info: |
 transition: fade
 ---
 
+---
+layout: intro
+---
+
+# Data Science and Machine Learning
+Hands-on Tutorial
+
+---
+layout: presenter
+presenterImage: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1622370075/as-portfolio/alvaro_saburido.jpg'
+---
+
+- Shuhua Wang
+- Senior Data Engineer
+- Ovintiv
+
+---
+
 # Module 1
 ## Environment Setup & Tooling
 
