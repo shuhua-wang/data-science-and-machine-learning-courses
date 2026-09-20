@@ -1,3 +1,6 @@
 # Data Science and Machine Learning Courses
 
-## Tutorial
+A beginner-first data science / ML course, covering environment setup with `uv`,
+Python fundamentals, numpy, pandas, matplotlib, and scikit-learn.
+
+## Start here

@@ -346,6 +346,9 @@ my-first-project/
 └── main.py
 ```
 
+<a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">pyproject.toml</a>:
+standard, modern configuration file used to manage a project's metadata, dependencies, build settings, and tool configurations
+
 ---
 
 # `uv add` — add a dependency
