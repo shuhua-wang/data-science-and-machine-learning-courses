@@ -278,7 +278,200 @@ Try it yourself: `notebooks/2.1-variables-types-operators.ipynb`
 
 ---
 
-## Lesson 2.2 — Control Flow
+## Lesson 2.2 — Core Data Structures: Lists, Tuples, Dicts, Sets
+
+So far every variable has held one single value. Python's built-in **data structures**
+let a single variable hold *many* values, organized in different ways depending on what
+you need.
+
+### Lists
+
+A **list** is an ordered, changeable ("mutable") collection of items, written with
+square brackets `[]` and commas between items:
+
+```python
+groceries = ["eggs", "milk", "bread"]
+print(groceries)
+# -> ['eggs', 'milk', 'bread']
+```
+
+A list can hold any type, and even a mix of types, though in practice most lists hold
+one consistent type of thing.
+
+**Indexing** — get a single item by its position, starting from `0`:
+
+```python
+groceries = ["eggs", "milk", "bread"]
+print(groceries[0])   # -> eggs   (the FIRST item)
+print(groceries[1])   # -> milk
+print(groceries[-1])  # -> bread  (the LAST item — negative indexes count from the end)
+```
+
+> **Beginner mistake: off-by-one errors with indexing.**
+> Python counts positions starting at `0`, not `1`. In a 3-item list, the valid indexes
+> are `0`, `1`, and `2` — there is no `groceries[3]`; trying it raises an
+> `IndexError: list index out of range`. The *last* item's index is always
+> `len(groceries) - 1`, or more simply, `groceries[-1]`.
+
+**Slicing** — get a *sub-list* using `start:stop` (stop is excluded, same rule as
+`range()`):
+
+```python
+numbers = [10, 20, 30, 40, 50]
+print(numbers[1:3])   # -> [20, 30]   (index 1 up to, not including, index 3)
+print(numbers[:2])    # -> [10, 20]   (from the start)
+print(numbers[2:])    # -> [30, 40, 50]  (to the end)
+```
+
+**Mutating** a list — lists can be changed in place after creation:
+
+```python
+groceries = ["eggs", "milk", "bread"]
+groceries.append("butter")        # add to the end
+print(groceries)
+# -> ['eggs', 'milk', 'bread', 'butter']
+
+groceries[0] = "brown eggs"       # change an item by index
+print(groceries)
+# -> ['brown eggs', 'milk', 'bread', 'butter']
+
+groceries.remove("bread")         # remove a specific value
+print(groceries)
+# -> ['brown eggs', 'milk', 'butter']
+
+print(len(groceries))             # len() gives the number of items
+# -> 3
+```
+
+Common list methods: `.append(x)` adds `x` to the end; `.remove(x)` removes the first
+match of `x`; `.sort()` sorts the list in place; `.pop()` removes and returns the last
+item. `len(some_list)` (a built-in function, not a method) tells you how many items are
+in it.
+
+### Tuples
+
+A **tuple** looks and behaves almost exactly like a list — ordered, indexable, sliceable
+— except it's **immutable**: once created, it cannot be changed.
+
+```python
+point = (3, 7)
+print(point[0])
+# -> 3
+```
+
+```python
+point = (3, 7)
+point[0] = 9
+```
+
+```text
+TypeError: 'tuple' object does not support item assignment
+```
+
+**Why use a tuple instead of a list?** Reach for a tuple when the collection represents
+a fixed, small group of values that shouldn't change — like an (x, y) coordinate, or a
+(latitude, longitude) pair. The immutability is a *feature*: it signals to anyone reading
+your code "this won't be modified," and Python will enforce that for you.
+
+### Dictionaries
+
+A **dictionary** (`dict`) stores **key/value pairs** — instead of looking items up by
+position (like a list), you look them up by a meaningful key. Written with curly braces
+`{}`:
+
+```python
+person = {"name": "Grace", "age": 36, "city": "Boston"}
+print(person["name"])
+# -> Grace
+```
+
+```python
+person["age"] = 37                # update a value
+person["job"] = "Engineer"        # add a new key/value pair
+print(person)
+# -> {'name': 'Grace', 'age': 37, 'city': 'Boston', 'job': 'Engineer'}
+```
+
+Looking up a key that doesn't exist raises a `KeyError`. To look up safely, with a
+fallback value if the key is missing, use `.get()`:
+
+```python
+print(person.get("job"))              # -> Engineer
+print(person.get("salary"))           # -> None  (key missing, no error)
+print(person.get("salary", 0))        # -> 0     (custom default instead of None)
+```
+
+You can loop over a dictionary's keys, values, or both:
+
+```python
+person = {"name": "Grace", "age": 36}
+
+for key in person:
+    print(key)
+# -> name
+# -> age
+
+for key, value in person.items():
+    print(f"{key}: {value}")
+# -> name: Grace
+# -> age: 36
+```
+
+`.items()` gives you both the key and the value together on each pass — this is the
+pattern you'll use most often.
+
+### Sets
+
+A **set** is an unordered collection of **unique** items — duplicates are automatically
+removed, and there's no indexing (since there's no order to index into). Written with
+curly braces like a dict, but with values only, no key/value pairs:
+
+```python
+tags = {"python", "beginner", "python", "tutorial"}
+print(tags)
+# -> {'python', 'beginner', 'tutorial'}   (the duplicate 'python' was dropped)
+```
+
+Sets exist for two main jobs: removing duplicates, and fast membership testing
+(checking whether something is *in* the collection):
+
+```python
+unique_visitors = set(["alice", "bob", "alice", "carol", "bob"])
+print(unique_visitors)
+# -> {'alice', 'bob', 'carol'}
+
+print("alice" in unique_visitors)
+# -> True
+print("dave" in unique_visitors)
+# -> False
+```
+
+The `in` operator also works on lists, tuples, and dicts (checking dict keys), but a set
+checks membership faster, which matters once a collection gets large.
+
+### Which structure should I use?
+
+| Structure | Ordered? | Changeable? | Duplicates? | Use it for |
+|-----------|----------|-------------|-------------|------------|
+| `list` | yes | yes | yes | a general-purpose sequence you'll modify |
+| `tuple` | yes | no | yes | a fixed, small group of values |
+| `dict` | yes (insertion order) | yes | keys must be unique | looking things up by name/key |
+| `set` | no | yes | no (auto-removed) | uniqueness checks, membership tests |
+
+> **Beginner mistake: mutable default arguments.**
+> This one is subtle enough that it trips up experienced programmers too, so we're
+> flagging it early even though it involves functions (Lesson 2.4). Never write
+> `def add_item(item, items=[]):` — that empty list `[]` is created **once**, when the
+> function is defined, and then *reused and mutated* across every call, which leads to
+> very confusing bugs. The fix is `def add_item(item, items=None):` and then
+> `if items is None: items = []` inside the function body. We'll come back to this with
+> a full example in Lesson 2.4.
+
+Try it yourself: `notebooks/2.2-data-structures.ipynb`
+
+---
+
+## Lesson 2.3 — Control Flow
 
 **Control flow** is how a program decides *which* code to run, and *how many times* to
 run it, instead of just executing every line top to bottom. This lesson covers Python's
@@ -508,200 +701,7 @@ print(total)
 Both patterns follow the same shape: create a starting variable *before* the loop
 (`cat_count = 0`, `total = 0`), then update it *inside* the loop.
 
-Try it yourself: `notebooks/2.2-control-flow.ipynb`
-
----
-
-## Lesson 2.3 — Core Data Structures: Lists, Tuples, Dicts, Sets
-
-So far every variable has held one single value. Python's built-in **data structures**
-let a single variable hold *many* values, organized in different ways depending on what
-you need.
-
-### Lists
-
-A **list** is an ordered, changeable ("mutable") collection of items, written with
-square brackets `[]` and commas between items:
-
-```python
-groceries = ["eggs", "milk", "bread"]
-print(groceries)
-# -> ['eggs', 'milk', 'bread']
-```
-
-A list can hold any type, and even a mix of types, though in practice most lists hold
-one consistent type of thing.
-
-**Indexing** — get a single item by its position, starting from `0`:
-
-```python
-groceries = ["eggs", "milk", "bread"]
-print(groceries[0])   # -> eggs   (the FIRST item)
-print(groceries[1])   # -> milk
-print(groceries[-1])  # -> bread  (the LAST item — negative indexes count from the end)
-```
-
-> **Beginner mistake: off-by-one errors with indexing.**
-> Python counts positions starting at `0`, not `1`. In a 3-item list, the valid indexes
-> are `0`, `1`, and `2` — there is no `groceries[3]`; trying it raises an
-> `IndexError: list index out of range`. The *last* item's index is always
-> `len(groceries) - 1`, or more simply, `groceries[-1]`.
-
-**Slicing** — get a *sub-list* using `start:stop` (stop is excluded, same rule as
-`range()`):
-
-```python
-numbers = [10, 20, 30, 40, 50]
-print(numbers[1:3])   # -> [20, 30]   (index 1 up to, not including, index 3)
-print(numbers[:2])    # -> [10, 20]   (from the start)
-print(numbers[2:])    # -> [30, 40, 50]  (to the end)
-```
-
-**Mutating** a list — lists can be changed in place after creation:
-
-```python
-groceries = ["eggs", "milk", "bread"]
-groceries.append("butter")        # add to the end
-print(groceries)
-# -> ['eggs', 'milk', 'bread', 'butter']
-
-groceries[0] = "brown eggs"       # change an item by index
-print(groceries)
-# -> ['brown eggs', 'milk', 'bread', 'butter']
-
-groceries.remove("bread")         # remove a specific value
-print(groceries)
-# -> ['brown eggs', 'milk', 'butter']
-
-print(len(groceries))             # len() gives the number of items
-# -> 3
-```
-
-Common list methods: `.append(x)` adds `x` to the end; `.remove(x)` removes the first
-match of `x`; `.sort()` sorts the list in place; `.pop()` removes and returns the last
-item. `len(some_list)` (a built-in function, not a method) tells you how many items are
-in it.
-
-### Tuples
-
-A **tuple** looks and behaves almost exactly like a list — ordered, indexable, sliceable
-— except it's **immutable**: once created, it cannot be changed.
-
-```python
-point = (3, 7)
-print(point[0])
-# -> 3
-```
-
-```python
-point = (3, 7)
-point[0] = 9
-```
-
-```text
-TypeError: 'tuple' object does not support item assignment
-```
-
-**Why use a tuple instead of a list?** Reach for a tuple when the collection represents
-a fixed, small group of values that shouldn't change — like an (x, y) coordinate, or a
-(latitude, longitude) pair. The immutability is a *feature*: it signals to anyone reading
-your code "this won't be modified," and Python will enforce that for you.
-
-### Dictionaries
-
-A **dictionary** (`dict`) stores **key/value pairs** — instead of looking items up by
-position (like a list), you look them up by a meaningful key. Written with curly braces
-`{}`:
-
-```python
-person = {"name": "Grace", "age": 36, "city": "Boston"}
-print(person["name"])
-# -> Grace
-```
-
-```python
-person["age"] = 37                # update a value
-person["job"] = "Engineer"        # add a new key/value pair
-print(person)
-# -> {'name': 'Grace', 'age': 37, 'city': 'Boston', 'job': 'Engineer'}
-```
-
-Looking up a key that doesn't exist raises a `KeyError`. To look up safely, with a
-fallback value if the key is missing, use `.get()`:
-
-```python
-print(person.get("job"))              # -> Engineer
-print(person.get("salary"))           # -> None  (key missing, no error)
-print(person.get("salary", 0))        # -> 0     (custom default instead of None)
-```
-
-You can loop over a dictionary's keys, values, or both:
-
-```python
-person = {"name": "Grace", "age": 36}
-
-for key in person:
-    print(key)
-# -> name
-# -> age
-
-for key, value in person.items():
-    print(f"{key}: {value}")
-# -> name: Grace
-# -> age: 36
-```
-
-`.items()` gives you both the key and the value together on each pass — this is the
-pattern you'll use most often.
-
-### Sets
-
-A **set** is an unordered collection of **unique** items — duplicates are automatically
-removed, and there's no indexing (since there's no order to index into). Written with
-curly braces like a dict, but with values only, no key/value pairs:
-
-```python
-tags = {"python", "beginner", "python", "tutorial"}
-print(tags)
-# -> {'python', 'beginner', 'tutorial'}   (the duplicate 'python' was dropped)
-```
-
-Sets exist for two main jobs: removing duplicates, and fast membership testing
-(checking whether something is *in* the collection):
-
-```python
-unique_visitors = set(["alice", "bob", "alice", "carol", "bob"])
-print(unique_visitors)
-# -> {'alice', 'bob', 'carol'}
-
-print("alice" in unique_visitors)
-# -> True
-print("dave" in unique_visitors)
-# -> False
-```
-
-The `in` operator also works on lists, tuples, and dicts (checking dict keys), but a set
-checks membership faster, which matters once a collection gets large.
-
-### Which structure should I use?
-
-| Structure | Ordered? | Changeable? | Duplicates? | Use it for |
-|-----------|----------|-------------|-------------|------------|
-| `list` | yes | yes | yes | a general-purpose sequence you'll modify |
-| `tuple` | yes | no | yes | a fixed, small group of values |
-| `dict` | yes (insertion order) | yes | keys must be unique | looking things up by name/key |
-| `set` | no | yes | no (auto-removed) | uniqueness checks, membership tests |
-
-> **Beginner mistake: mutable default arguments.**
-> This one is subtle enough that it trips up experienced programmers too, so we're
-> flagging it early even though it involves functions (Lesson 2.4). Never write
-> `def add_item(item, items=[]):` — that empty list `[]` is created **once**, when the
-> function is defined, and then *reused and mutated* across every call, which leads to
-> very confusing bugs. The fix is `def add_item(item, items=None):` and then
-> `if items is None: items = []` inside the function body. We'll come back to this with
-> a full example in Lesson 2.4.
-
-Try it yourself: `notebooks/2.3-data-structures.ipynb`
+Try it yourself: `notebooks/2.3-control-flow.ipynb`
 
 ---
 
