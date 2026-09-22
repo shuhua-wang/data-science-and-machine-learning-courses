@@ -500,7 +500,7 @@ Setup local development environment
 - Open the project folder in the vscode
 - Run `uv venv .venv` and `uv sync` in the terminal
 
-Run project in a remote GitHub codespaces
+Run project in a remote GitHub codespaces (no need to install anything on your local computer)
 
 - Register <a href="https://github.com/">GitHub</a>
 - Fork https://github.com/shuhua-wang/data-science-and-machine-learning-courses
