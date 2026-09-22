@@ -23,7 +23,8 @@
                 "Anthropic.claude-code",
                 "charliermarsh.ruff",
                 "ms-azuretools.vscode-containers",
-                "PKief.material-icon-theme"
+                "PKief.material-icon-theme",
+                "mechatroner.rainbow-csv"
             ]
         }
     }
