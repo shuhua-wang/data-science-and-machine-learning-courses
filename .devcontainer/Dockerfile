@@ -2,7 +2,7 @@ FROM python:3.14.7-slim-trixie
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y bash git curl ca-certificates && \
+    apt-get install -y --no-install-recommends bash git curl ca-certificates make && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
