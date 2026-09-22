@@ -22,7 +22,8 @@
                 "EditorConfig.EditorConfig",
                 "Anthropic.claude-code",
                 "charliermarsh.ruff",
-                "ms-azuretools.vscode-containers"
+                "ms-azuretools.vscode-containers",
+                "PKief.material-icon-theme"
             ]
         }
     }
