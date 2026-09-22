@@ -9,8 +9,7 @@ Hands-on notebooks for Module 3 (pandas).
 - `3.5-handling-missing-data.ipynb`
 - `3.6-groupby-and-aggregation.ipynb`
 - `3.7-merge-and-join.ipynb`
-- `3.8-reshaping-pivot-melt.ipynb`
 
-`scratch/` holds files written out by the Lesson 3.2 exercises (CSV/Excel/JSON
-round-trip practice). It's exercise output only, not course material, and it's safe
-to delete and regenerate by re-running that notebook.
+`scratch/` holds files written out by the Lesson 3.2 exercises. It's exercise
+output only, not course material, and it's safe to delete and regenerate by
+re-running that notebook.
