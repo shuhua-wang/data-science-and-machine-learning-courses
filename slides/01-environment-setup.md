@@ -464,6 +464,8 @@ Installed 38 packages in 3.4s
 
 ```bash
 uv run jupyter lab
+
+uv run jupyter notebook
 ```
 ```text
 Jupyter Server is running at:
@@ -482,6 +484,27 @@ right packages.
 - `Shift+Enter` runs a cell and moves to the next
 - "Run All Cells" runs a whole notebook top to bottom
 - `ModuleNotFoundError` on something installed? → wrong kernel selected
+
+---
+
+# Summary
+
+Setup local development environment
+
+- Install <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+- Install `uv`:
+  - On Windows: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+  - On macOS: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- Install python: `uv python install 3.14`
+- Download https://github.com/shuhua-wang/data-science-and-machine-learning-courses and unzip it
+- Open the project folder in the vscode
+- Run `uv venv .venv` and `uv sync` in the terminal
+
+Run project in a remote GitHub codespaces
+
+- Register <a href="https://github.com/">GitHub</a>
+- Fork https://github.com/shuhua-wang/data-science-and-machine-learning-courses
+- Open project in the codespaces
 
 ---
 layout: center
