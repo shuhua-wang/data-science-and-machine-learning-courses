@@ -22,3 +22,4 @@ RUN mkdir -p "$NVM_DIR" && \
     nvm use default && \
     nvm cache clear
 ENV PATH="$NVM_DIR/current/bin:$PATH"
+ENV UV_LINK_MODE=copy
