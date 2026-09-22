@@ -1,9 +1,5 @@
 # Module 2: Python Programming Basics
 
-> See `COURSE_OUTLINE.md` at the repo root for full lesson objectives, durations, and
-> deliverables. This file mirrors the lesson structure and contains the full written
-> content for each lesson.
-
 This is your first real exposure to writing code, so we're going to go slowly and
 explain every new word the first time it shows up. If you've never programmed before,
 that's exactly who this module is for.
@@ -107,13 +103,13 @@ will anyone reading your code.
 Every value in Python has a **type**, which tells Python (and you) what kind of data it
 is and what you can do with it. Module 2 mostly uses five core types:
 
-| Type | What it represents | Example |
-|------|---------------------|---------|
-| `int` | a whole number | `29`, `-4`, `0` |
+| Type    | What it represents            | Example                |
+|---------|-------------------------------|------------------------|
+| `int`   | a whole number                | `29`, `-4`, `0`        |
 | `float` | a number with a decimal point | `3.14`, `-0.5`, `29.0` |
-| `str` | text ("string") | `"hello"`, `'Grace'` |
-| `bool` | a truth value | `True`, `False` |
-| `None` | "no value at all" | `None` |
+| `str`   | text ("string")               | `"hello"`, `'Grace'`   |
+| `bool`  | a truth value                 | `True`, `False`        |
+| `None`  | "no value at all"             | `None`                 |
 
 You can check any value's type with the built-in `type()` function:
 
@@ -451,12 +447,12 @@ checks membership faster, which matters once a collection gets large.
 
 ### Which structure should I use?
 
-| Structure | Ordered? | Changeable? | Duplicates? | Use it for |
-|-----------|----------|-------------|-------------|------------|
-| `list` | yes | yes | yes | a general-purpose sequence you'll modify |
-| `tuple` | yes | no | yes | a fixed, small group of values |
-| `dict` | yes (insertion order) | yes | keys must be unique | looking things up by name/key |
-| `set` | no | yes | no (auto-removed) | uniqueness checks, membership tests |
+| Structure | Ordered?              | Changeable? | Duplicates?         | Use it for                               |
+|-----------|-----------------------|-------------|---------------------|------------------------------------------|
+| `list`    | yes                   | yes         | yes                 | a general-purpose sequence you'll modify |
+| `tuple`   | yes                   | no          | yes                 | a fixed, small group of values           |
+| `dict`    | yes (insertion order) | yes         | keys must be unique | looking things up by name/key            |
+| `set`     | no                    | yes         | no (auto-removed)   | uniqueness checks, membership tests      |
 
 > **Beginner mistake: mutable default arguments.**
 > This one is subtle enough that it trips up experienced programmers too, so we're

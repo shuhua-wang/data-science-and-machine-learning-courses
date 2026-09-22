@@ -1,9 +1,6 @@
 # Module 3 notebooks
 
-Hands-on notebooks for Module 3 (pandas). Each notebook loads the shared course
-dataset via `data_science_course.datasets` (`load_customers`, `load_products`,
-`load_orders`) -- never a hardcoded CSV path -- and pairs with the matching section
-of `modules/03-pandas/notes.md`.
+Hands-on notebooks for Module 3 (pandas).
 
 - `3.1-series-and-dataframe-basics.ipynb`
 - `3.2-reading-and-writing-data.ipynb`

@@ -1,24 +1,5 @@
 # Module 3: Data Manipulation with pandas
 
-> See `COURSE_OUTLINE.md` at the repo root for full lesson objectives, durations, and
-> deliverables.
-
-Every worked example in this module uses the same three-table "online store" dataset
-you'll keep using through Modules 4-6: `customers`, `products`, and `orders`. See
-`data/README.md` for the full schema and the specific data-quality issues baked into it
-on purpose (messy `region` text, missing values, duplicate `order_id` rows, orphan
-`customer_id` rows). You'll fix every one of those issues somewhere in this module —
-that's not a coincidence, it's the point. Always load the data with the loader
-functions, never a hardcoded path:
-
-```python
-from data_science_course.datasets import load_customers, load_products, load_orders
-
-customers = load_customers()
-products = load_products()
-orders = load_orders()
-```
-
 ---
 
 ## Lesson 3.1 — Series and DataFrame Basics
@@ -172,15 +153,15 @@ customers.info()
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 800 entries, 0 to 799
 Data columns (total 7 columns):
- #   Column               Non-Null Count  Dtype  
----  ------               --------------  -----  
- 0   customer_id          800 non-null    object 
- 1   signup_date          800 non-null    object 
- 2   region               776 non-null    object 
+ #   Column               Non-Null Count  Dtype
+---  ------               --------------  -----
+ 0   customer_id          800 non-null    object
+ 1   signup_date          800 non-null    object
+ 2   region               776 non-null    object
  3   age                  752 non-null    float64
- 4   membership_tier      800 non-null    object 
- 5   acquisition_channel  800 non-null    object 
- 6   churned              800 non-null    int64  
+ 4   membership_tier      800 non-null    object
+ 5   acquisition_channel  800 non-null    object
+ 6   churned              800 non-null    int64
 dtypes: float64(1), int64(1), object(5)
 memory usage: 43.9+ KB
 ```
@@ -915,7 +896,7 @@ orders.groupby("status")["order_total"].agg(["count", "mean", "sum"]).round(2)
 ```
 ```
            count    mean         sum
-status                              
+status
 cancelled    192  301.92    57968.57
 completed   5391  272.78  1470538.13
 returned     421  257.91   108581.26
@@ -935,7 +916,7 @@ summary.round(2)
 ```
 ```
            n_orders  total_revenue  avg_order
-status                                       
+status
 cancelled       192       57968.57     301.92
 completed      5391     1470538.13     272.78
 returned        421      108581.26     257.91
@@ -1111,7 +1092,7 @@ orders_by_id.join(customers_by_id, how="left", lsuffix="_ord")[["order_id", "reg
 ```
 ```
             order_id region
-customer_id                
+customer_id
 C00258       O000080   west
 C00559       O002751   WEST
 C00126       O003297  NORTH
@@ -1208,7 +1189,7 @@ wide.round(0)
 ```
 ```
 category          Beauty    Books  Clothing  Electronics  Home & Kitchen  Sports & Outdoors
-membership_tier                                                                            
+membership_tier
 Bronze           24699.0  24330.0   49835.0     379978.0         79900.0           128401.0
 Gold              7162.0   6575.0   13567.0     115910.0         16687.0            49601.0
 Platinum          3691.0   2904.0    6508.0      78220.0         11967.0            18350.0
@@ -1234,7 +1215,7 @@ monthly.round(0).tail(6)
 ```
 ```
 status   cancelled  completed  returned
-month                                  
+month
 2025-01     3928.0    69049.0    2602.0
 2025-02     3034.0    53511.0    2622.0
 2025-03     4351.0    59843.0   10024.0
